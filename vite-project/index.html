@@ -24,34 +24,59 @@
   </head>
   <body class="font-kumbph">
     <div>
-      <header>
-        <nav>
-          <div>
-            <img src="./src/images/logo.svg" alt="Sneakers" />
+      <header class="bg-white fixed z-10 w-full">
+        <nav class="w-[90%] mx-auto py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <button class="pt-1 md:hidden">
+              <img src="./src/images/icon-menu.svg" alt="" />
+            </button>
+            <div>
+              <img src="./src/images/logo.svg" alt="Sneakers" />
+            </div>
           </div>
-          <ul>
+          <ul class="md:flex hidden">
             <li><a href="#">Collections</a></li>
             <li><a href="#">Men</a></li>
             <li><a href="#">Women</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
-          <div>
+          <div class="flex items-center justify-end gap-4">
             <a href="#" aria-label="Cart link">
               <img src="./src/images/icon-cart.svg" alt="Cart" />
             </a>
             <a href="#" aria-label="Avatar link">
-              <img src="./src/images/image-avatar.png" alt="Your avatar" />
+              <img
+                class="w-6"
+                src="./src/images/image-avatar.png"
+                alt="Your avatar"
+              />
             </a>
           </div>
         </nav>
       </header>
       <main>
         <div>
-          <div>
-            <img src="./src/images/image-product-1.jpg" alt="Image product" />
+          <div class="relative">
+            <button
+              aria-label="Previous image"
+              class="left-4 bg-white aspect-square w-9 grid place-items-center rounded-full absolute -translate-y-[60%] top-[60%]"
+            >
+              <img class="w-2" src="./src/images/icon-previous.svg" alt="" />
+            </button>
+            <img
+              class="object-[0rem_2rem]"
+              src="./src/images/image-product-1.jpg"
+              alt="Image product"
+            />
+            <button
+              class="bg-white aspect-square w-9 grid place-items-center rounded-full absolute right-4 -translate-y-[60%] top-[60%]"
+              aria-label="Next image"
+            >
+              <img class="w-2" src="./src/images/icon-next.svg" alt="" />
+            </button>
           </div>
-          <div>
+          <div class="max-md:hidden">
             <button aria-label="product image 1">
               <img src="./src/images/image-product-1-thumbnail.jpg" alt="" />
             </button>
@@ -69,30 +94,46 @@
             </button>
           </div>
         </div>
-        <div>
-          <div>
-            <span>Sneaker Company</span>
-            <h1>Fall Limited Edition Sneakers</h1>
-          </div>
-          <p>
+        <div class="my-4 w-[90%] mx-auto grid gap-2">
+          <span
+            class="uppercase text-pri-orange font-bold tracking-widest text-sm"
+            >Sneaker Company</span
+          >
+          <h1 class="font-bold text-3xl text-neu-very-dark-blue">
+            Fall Limited Edition Sneakers
+          </h1>
+          <p class="text-base text-neu-dark-grayish-blue">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
           </p>
-          <p>
-            <span>$125.00</span>
-            <span>50%</span>
-            <span>$250.00</span>
-          </p>
-          <div>
-            <div>
-              <button>-</button>
-              <span>0</span>
-              <!-- <input aria-label="number" type="number" /> -->
-              <button>+</button>
+          <div class="my-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="font-bold text-2xl">$125.00</span>
+              <span
+                class="bg-pri-palte-orange px-2 rounded-lg text-pri-orange font-bold"
+                >50%</span
+              >
             </div>
-            <button>Add to cart</button>
+            <span
+              class="font-bold text-neu-grayish-blue relative after:block after:content-[''] after:w-full after:h-[2px] after:bg-neu-grayish-blue after:absolute after:bottom-[9px] after:left-0"
+              >$250.00</span
+            >
           </div>
+          <div
+            class="rounded-lg grid grid-cols-3 items-center bg-neu-light-grayish-blue font-bold"
+          >
+            <button class="text-2xl text-pri-orange p-4">-</button>
+            <span class="text-center">0</span>
+            <!-- <input aria-label="number" type="number" /> -->
+            <button class="text-2xl text-pri-orange">+</button>
+          </div>
+          <button
+            class="rounded-lg w-full bg-pri-orange py-3 text-white font-bold flex justify-center gap-3 items-center"
+          >
+            <img class="w-4" src="./src/images/icon-cart-white.svg" alt="" />
+            Add to cart
+          </button>
         </div>
       </main>
       <footer>
