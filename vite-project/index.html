@@ -24,30 +24,54 @@
   </head>
   <body class="font-kumbph">
     <div>
-      <header class="bg-white fixed z-10 w-full">
-        <nav class="w-[90%] mx-auto py-4 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <button class="pt-1 md:hidden">
-              <img src="./src/images/icon-menu.svg" alt="" />
-            </button>
-            <div>
-              <img src="./src/images/logo.svg" alt="Sneakers" />
+      <header class="bg-white max-md:fixed z-10 w-full">
+        <nav
+          class="border-b border-neu-light-grayish-blue w-[90%] md:w-[80%] mx-auto py-4 md:p-6 flex items-center justify-between"
+        >
+          <div class="flex items-center">
+            <div class="max-md:flex gap-4 md:mr-12">
+              <button class="pt-1 md:hidden">
+                <img src="./src/images/icon-menu.svg" alt="" />
+              </button>
+              <div>
+                <img src="./src/images/logo.svg" alt="Sneakers" />
+              </div>
             </div>
+            <ul class="md:flex gap-6 hidden font-medium">
+              <li
+                class="text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
+              >
+                <a href="#">Collections</a>
+              </li>
+              <li
+                class="text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
+              >
+                <a href="#">Men</a>
+              </li>
+              <li
+                class="text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
+              >
+                <a href="#">Women</a>
+              </li>
+              <li
+                class="text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
+              >
+                <a href="#">About</a>
+              </li>
+              <li
+                class="text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
+              >
+                <a href="#">Contact</a>
+              </li>
+            </ul>
           </div>
-          <ul class="md:flex hidden">
-            <li><a href="#">Collections</a></li>
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Women</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          <div class="flex items-center justify-end gap-4">
+          <div class="flex items-center justify-end gap-4 md:gap-8">
             <a href="#" aria-label="Cart link">
               <img src="./src/images/icon-cart.svg" alt="Cart" />
             </a>
             <a href="#" aria-label="Avatar link">
               <img
-                class="w-6"
+                class="w-6 md:w-10"
                 src="./src/images/image-avatar.png"
                 alt="Your avatar"
               />
@@ -56,84 +80,109 @@
         </nav>
       </header>
       <main>
-        <div>
-          <div class="relative">
-            <button
-              aria-label="Previous image"
-              class="left-4 bg-white aspect-square w-9 grid place-items-center rounded-full absolute -translate-y-[60%] top-[60%]"
-            >
-              <img class="w-2" src="./src/images/icon-previous.svg" alt="" />
-            </button>
-            <img
-              class="object-[0rem_2rem]"
-              src="./src/images/image-product-1.jpg"
-              alt="Image product"
-            />
-            <button
-              class="bg-white aspect-square w-9 grid place-items-center rounded-full absolute right-4 -translate-y-[60%] top-[60%]"
-              aria-label="Next image"
-            >
-              <img class="w-2" src="./src/images/icon-next.svg" alt="" />
-            </button>
+        <div
+          class="md:mt-12 md:w-[75%] md:mx-auto md:flex items-start gap-24 justify-center"
+        >
+          <div class="md:w-full">
+            <div class="relative">
+              <button
+                aria-label="Previous image"
+                class="md:hidden left-4 bg-white aspect-square w-9 grid place-items-center rounded-full absolute -translate-y-[60%] top-[60%]"
+              >
+                <img class="w-2" src="./src/images/icon-previous.svg" alt="" />
+              </button>
+              <img
+                class="md:rounded-2xl max-md:object-[0rem_2rem]"
+                src="./src/images/image-product-1.jpg"
+                alt="Image product"
+              />
+              <button
+                class="md:hidden bg-white aspect-square w-9 grid place-items-center rounded-full absolute right-4 -translate-y-[60%] top-[60%]"
+                aria-label="Next image"
+              >
+                <img class="w-2" src="./src/images/icon-next.svg" alt="" />
+              </button>
+            </div>
+            <div class="max-md:hidden flex gap-4 md:mt-4 justify-between">
+              <button aria-label="product image 1">
+                <img
+                  class="rounded-xl"
+                  src="./src/images/image-product-1-thumbnail.jpg"
+                  alt=""
+                />
+              </button>
+              <button aria-label="product image 2">
+                <img
+                  class="rounded-xl"
+                  src="./src/images/image-product-2-thumbnail.jpg"
+                  alt=""
+                />
+              </button>
+              <button aria-label="product image 3">
+                <img
+                  class="rounded-xl"
+                  src="./src/images/image-product-3-thumbnail.jpg"
+                  alt=""
+                />
+              </button>
+              <button aria-label="product image 4">
+                <img
+                  class="rounded-xl"
+                  src="./src/images/image-product-4-thumbnail.jpg"
+                  alt=""
+                />
+              </button>
+            </div>
           </div>
-          <div class="max-md:hidden">
-            <button aria-label="product image 1">
-              <img src="./src/images/image-product-1-thumbnail.jpg" alt="" />
-            </button>
-            <button aria-label="product image 2">
-              <img src="./src/images/image-product-2-thumbnail.jpg" alt="" />
-            </button>
-            <button aria-label="product image 3">
-              <img src="./src/images/image-product-3-thumbnail.jpg" alt="" />
-            </button>
-            <button aria-label="product image 4">
-              <img src="./src/images/image-product-4-thumbnail.jpg" alt="" />
-            </button>
-            <button aria-label="product image 5">
-              <img src="./src/images/image-product-5-thumbnail.jpg" alt="" />
-            </button>
-          </div>
-        </div>
-        <div class="my-4 w-[90%] mx-auto grid gap-2">
-          <span
-            class="uppercase text-pri-orange font-bold tracking-widest text-sm"
-            >Sneaker Company</span
-          >
-          <h1 class="font-bold text-3xl text-neu-very-dark-blue">
-            Fall Limited Edition Sneakers
-          </h1>
-          <p class="text-base text-neu-dark-grayish-blue">
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they’ll withstand everything
-            the weather can offer.
-          </p>
-          <div class="my-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="font-bold text-2xl">$125.00</span>
+          <div class="max-md:my-4 md:mt-12 max-md:w-[90%] mx-auto grid gap-2">
+            <span
+              class="uppercase text-pri-orange font-bold tracking-widest text-sm"
+              >Sneaker Company</span
+            >
+            <h1 class="font-bold text-3xl md:text-5xl text-neu-very-dark-blue">
+              Fall Limited Edition Sneakers
+            </h1>
+            <p class="md:w-[95%] text-base text-neu-dark-grayish-blue md:mt-6">
+              <span>
+                These low-profile sneakers are your perfect casual wear
+                companion. Featuring a durable rubber outer sole, they’ll
+                withstand everything the weather can offer.
+              </span>
+            </p>
+            <div class="my-4 max-md:flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="font-bold text-2xl">$125.00</span>
+                <span
+                  class="bg-pri-palte-orange px-2 rounded-lg text-pri-orange font-bold"
+                  >50%</span
+                >
+              </div>
               <span
-                class="bg-pri-palte-orange px-2 rounded-lg text-pri-orange font-bold"
-                >50%</span
+                class="font-bold text-neu-grayish-blue relative after:block after:content-[''] after:w-full after:h-[2px] after:bg-neu-grayish-blue after:absolute after:bottom-[9px] after:left-0"
+                >$250.00</span
               >
             </div>
-            <span
-              class="font-bold text-neu-grayish-blue relative after:block after:content-[''] after:w-full after:h-[2px] after:bg-neu-grayish-blue after:absolute after:bottom-[9px] after:left-0"
-              >$250.00</span
-            >
+            <div class="grid gap-4 md:grid-cols-[1fr_2fr]">
+              <div
+                class="rounded-lg grid grid-cols-3 items-center bg-neu-light-grayish-blue font-bold"
+              >
+                <button class="text-2xl text-pri-orange p-4">-</button>
+                <span class="text-center">0</span>
+                <!-- <input aria-label="number" type="number" /> -->
+                <button class="text-2xl text-pri-orange">+</button>
+              </div>
+              <button
+                class="rounded-lg w-full bg-pri-orange py-3 text-white font-bold flex justify-center gap-3 items-center shadow-lg shadow-pri-orange"
+              >
+                <img
+                  class="w-4"
+                  src="./src/images/icon-cart-white.svg"
+                  alt=""
+                />
+                Add to cart
+              </button>
+            </div>
           </div>
-          <div
-            class="rounded-lg grid grid-cols-3 items-center bg-neu-light-grayish-blue font-bold"
-          >
-            <button class="text-2xl text-pri-orange p-4">-</button>
-            <span class="text-center">0</span>
-            <!-- <input aria-label="number" type="number" /> -->
-            <button class="text-2xl text-pri-orange">+</button>
-          </div>
-          <button
-            class="rounded-lg w-full bg-pri-orange py-3 text-white font-bold flex justify-center gap-3 items-center"
-          >
-            <img class="w-4" src="./src/images/icon-cart-white.svg" alt="" />
-            Add to cart
-          </button>
         </div>
       </main>
       <footer>
