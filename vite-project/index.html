@@ -33,7 +33,7 @@
               <button class="pt-1 md:hidden">
                 <img src="./src/images/icon-menu.svg" alt="" />
               </button>
-              <a href="#" aria-hidden="off">
+              <a href="#" aria-hidden="false">
                 <img src="./src/images/logo.svg" alt="Sneakers" />
               </a>
             </div>
@@ -68,9 +68,13 @@
           <div class="flex items-center justify-end gap-4 md:gap-8">
             <button
               data-cart-button
-              class="hover:animate-pulse focus:animate-pulse"
+              class="relative hover:animate-pulse focus:animate-pulse"
               aria-label="Cart link"
             >
+              <p
+                data-cart-item-number
+                class="absolute -top-2 -right-2 bg-pri-orange w-full text-white font-bold text-xs rounded-full"
+              ></p>
               <img src="./src/images/icon-cart.svg" alt="Cart" />
             </button>
             <a
@@ -90,17 +94,46 @@
       <main class="relative">
         <div
           data-cart-box
-          class="hidden block absolute shadow-2xl w-[300px] z-10 bg-white rounded-lg right-[50px] -top-14"
+          class="hidden block absolute shadow-2xl w-[350px] z-10 bg-white rounded-lg right-[50px] -top-14 pb-5"
         >
           <p
             class="border-b border-neu-grayish-blue py-2 px-4 font-bold text-neu-very-dark-blue"
           >
             Cart
           </p>
-          <div class="grid place-items-center h-[150px]">
+          <div
+            data-cart-empty
+            class="grid place-items-center h-[150px] w-[90%] mx-auto"
+          >
             <span class="text-neu-dark-grayish-blue font-bold"
               >Your cart is empty</span
             >
+          </div>
+          <div data-cart-no-empty class="w-[90%] mx-auto hidden block">
+            <div
+              class="my-5 text-neu-dark-grayish-blue flex gap-4 items-center"
+            >
+              <img data-cart-image class="w-12 rounded-md" src="" alt="" />
+              <div>
+                <p data-cart-title></p>
+                <p>
+                  <span data-cart-price></span> x
+                  <span data-cart-quatity></span>
+                  <span
+                    data-cart-total-price
+                    class="font-bold text-neu-very-dark-blue"
+                  ></span>
+                </p>
+              </div>
+              <button aria-label="Descart item">
+                <img src="./src/images/icon-delete.svg" alt="" />
+              </button>
+            </div>
+            <button
+              class="mb-1 w-full py-3 rounded-md bg-pri-orange text-white font-bold"
+            >
+              Checkout
+            </button>
           </div>
         </div>
         <div
@@ -115,6 +148,7 @@
                 <img class="w-2" src="./src/images/icon-previous.svg" alt="" />
               </button>
               <img
+                data-item-image
                 class="md:rounded-2xl max-md:object-[0rem_2rem]"
                 src="./src/images/image-product-1.jpg"
                 alt="Image product"
@@ -174,7 +208,10 @@
               class="uppercase text-pri-orange font-bold tracking-widest text-sm"
               >Sneaker Company</span
             >
-            <h1 class="font-bold text-3xl md:text-5xl text-neu-very-dark-blue">
+            <h1
+              data-item-title
+              class="font-bold text-3xl md:text-5xl text-neu-very-dark-blue"
+            >
               Fall Limited Edition Sneakers
             </h1>
             <p class="md:w-[95%] text-base text-neu-dark-grayish-blue md:mt-6">
@@ -186,7 +223,7 @@
             </p>
             <div class="my-4 max-md:flex items-center justify-between">
               <div class="flex items-center gap-3">
-                <span class="font-bold text-2xl">$125.00</span>
+                <span data-item-price class="font-bold text-2xl">$125.00</span>
                 <span
                   class="bg-pri-palte-orange px-2 rounded-lg text-pri-orange font-bold"
                   >50%</span
@@ -201,15 +238,21 @@
               <div
                 class="rounded-lg grid grid-cols-3 items-center bg-neu-light-grayish-blue font-bold"
               >
-                <button class="text-2xl text-pri-orange p-4">-</button>
-                <span class="text-center">0</span>
+                <button data-minus-btn class="text-2xl text-pri-orange p-4">
+                  -
+                </button>
+                <span data-number-input class="text-center">0</span>
                 <!-- <input aria-label="number" type="number" /> -->
-                <button class="text-2xl text-pri-orange p-4">+</button>
+                <button data-plus-btn class="text-2xl text-pri-orange p-4">
+                  +
+                </button>
               </div>
               <button
+                data-cart-item-btn
                 class="hover:opacity-50 focus:opacity-50 outline-transparent rounded-lg w-full bg-pri-orange py-3 text-white font-bold flex justify-center gap-3 items-center shadow-lg shadow-pri-orange"
               >
                 <img
+                  aria-hidden="true"
                   class="w-4"
                   src="./src/images/icon-cart-white.svg"
                   alt=""
