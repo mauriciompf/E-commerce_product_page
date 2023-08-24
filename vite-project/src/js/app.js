@@ -1,58 +1,86 @@
-const cartBox = document.querySelector("[data-cart-box]");
-const cartButton = document.querySelector("[data-cart-button]");
-const cartItemNumber = document.querySelector("[data-cart-item-number]");
-const minusButton = document.querySelector("[data-minus-btn]");
-const plusButton = document.querySelector("[data-plus-btn]");
-const numberInput = document.querySelector("[data-number-input]");
-const cartItemButton = document.querySelector("[data-cart-item-btn]");
-const emptyContentCart = document.querySelector("[data-cart-empty]");
-const ContentCart = document.querySelector("[data-cart-no-empty]");
-const itemPrice = document.querySelector("[data-item-price]");
-const itemTitle = document.querySelector("[data-item-title]");
-const itemImage = document.querySelector("[data-item-image]");
-const cartImage = document.querySelector("[data-cart-image]");
-const cartTitle = document.querySelector("[data-cart-title]");
-const cartPrice = document.querySelector("[data-cart-price]");
-const cartQuantity = document.querySelector("[data-cart-quatity]");
-const cartTotalPrice = document.querySelector("[data-cart-total-price]");
+const quantityNumber = getElementItem("input-number");
+const cartBox = getElementCartItem("box");
+const cartItemNumber = getElementCartItem("item-number");
+const emptyContentCart = getElementCartItem("empty");
+const contentCart = getElementCartItem("no-empty");
+const buttons = document.querySelectorAll("button");
+
+const elements = {
+  itemImage: getElementItem("image"),
+  cartItemImage: getElementCartItem("image"),
+  itemTitle: getElementItem("title"),
+  cartItemTitle: getElementCartItem("title"),
+  itemPrice: parseFloat(getElementItem("price").textContent.replace("$", "")),
+  cartItemPrice: getElementCartItem("price"),
+  cartItemQuantity: getElementCartItem("quantity"),
+  cartItemTotalPrice: getElementCartItem("total-price"),
+};
+
+function updateCartItemDisplay() {
+  const inputNumber = parseInt(quantityNumber.textContent);
+
+  if (inputNumber !== 0) {
+    cartItemNumber.innerHTML = inputNumber;
+
+    emptyContentCart.classList.add("hidden");
+    contentCart.classList.remove("hidden");
+
+    elements.cartItemImage.src = elements.itemImage.src;
+    elements.cartItemTitle.textContent = elements.itemTitle.textContent;
+    elements.cartItemPrice.textContent = elements.itemPrice.toFixed(2);
+    elements.cartItemQuantity.textContent = inputNumber;
+
+    const totalPrice = (inputNumber * elements.itemPrice).toFixed(2);
+    elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
+  } else {
+    emptyContentCart.classList.remove("hidden");
+    contentCart.classList.add("hidden");
+  }
+}
 
 function removeItem() {
-  if (!(numberInput.innerHTML <= 0)) {
-    numberInput.innerHTML--;
+  if (!(quantityNumber.innerHTML <= 0)) {
+    quantityNumber.innerHTML--;
   }
 
-  if (numberInput.innerHTML == "0" || numberInput.innerHTML == 0) {
+  if (quantityNumber.innerHTML == "0" || quantityNumber.innerHTML == 0) {
     cartItemNumber.innerHTML = "";
   }
 }
 
 function addItem() {
-  numberInput.innerHTML++;
-  ContentCart.classList.toggle("hidden");
-  emptyContentCart.classList.add("hidden");
-
-  cartImage.src = itemImage.src;
-  cartTitle.textContent = itemTitle.textContent;
-  cartPrice.textContent = itemPrice.textContent;
-  cartQuantity.textContent = numberInput.textContent;
-  cartTotalPrice.innerHTML = `\$${(
-    parseInt(numberInput.textContent) *
-    parseInt(itemPrice.textContent.replace("$", ""))
-  ).toFixed(2)}`;
+  quantityNumber.innerHTML++;
 }
 
-cartButton.addEventListener("click", () => {
+function displayCardBox() {
   cartBox.classList.toggle("hidden");
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const currentButton = e.currentTarget;
+
+    switch (currentButton.id) {
+      case "icon-cart-btn":
+        displayCardBox();
+        break;
+      case "plus-btn":
+        addItem();
+        break;
+      case "minus-btn":
+        removeItem();
+        break;
+      case "add-item-btn":
+        updateCartItemDisplay();
+        break;
+    }
+  });
 });
 
-minusButton.addEventListener("click", () => {
-  removeItem();
-});
+function getElementItem(item) {
+  return document.querySelector(`[data-item-${item}]`);
+}
 
-plusButton.addEventListener("click", () => {
-  addItem();
-});
-
-cartItemButton.addEventListener("click", () => {
-  cartItemNumber.innerHTML = numberInput.innerHTML;
-});
+function getElementCartItem(cartItem) {
+  return document.querySelector(`[data-cart-${cartItem}]`);
+}
