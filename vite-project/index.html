@@ -30,7 +30,7 @@
         >
           <div class="flex items-center">
             <div class="max-md:flex gap-4 md:mr-12">
-              <button class="pt-1 md:hidden">
+              <button id="menu-btn" class="pt-1 md:hidden">
                 <img src="./src/images/icon-menu.svg" alt="" />
               </button>
               <a href="#" aria-hidden="false">
@@ -67,7 +67,7 @@
           </div>
           <div class="flex items-center justify-end gap-4 md:gap-8">
             <button
-              data-cart-button
+              id="icon-cart-btn"
               class="relative hover:animate-pulse focus:animate-pulse"
               aria-label="Cart link"
             >
@@ -118,14 +118,14 @@
                 <p data-cart-title></p>
                 <p>
                   <span data-cart-price></span> x
-                  <span data-cart-quatity></span>
+                  <span data-cart-quantity></span>
                   <span
                     data-cart-total-price
                     class="font-bold text-neu-very-dark-blue"
                   ></span>
                 </p>
               </div>
-              <button aria-label="Descart item">
+              <button data-cart-delete aria-label="Descart item">
                 <img src="./src/images/icon-delete.svg" alt="" />
               </button>
             </div>
@@ -238,17 +238,17 @@
               <div
                 class="rounded-lg grid grid-cols-3 items-center bg-neu-light-grayish-blue font-bold"
               >
-                <button data-minus-btn class="text-2xl text-pri-orange p-4">
+                <button id="minus-btn" class="text-2xl text-pri-orange p-4">
                   -
                 </button>
-                <span data-number-input class="text-center">0</span>
+                <span data-item-input-number class="text-center">0</span>
                 <!-- <input aria-label="number" type="number" /> -->
-                <button data-plus-btn class="text-2xl text-pri-orange p-4">
+                <button id="plus-btn" class="text-2xl text-pri-orange p-4">
                   +
                 </button>
               </div>
               <button
-                data-cart-item-btn
+                id="add-item-btn"
                 class="hover:opacity-50 focus:opacity-50 outline-transparent rounded-lg w-full bg-pri-orange py-3 text-white font-bold flex justify-center gap-3 items-center shadow-lg shadow-pri-orange"
               >
                 <img
