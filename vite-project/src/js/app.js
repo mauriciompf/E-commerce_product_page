@@ -27,7 +27,7 @@ function updateCartItemDisplay() {
 
     elements.cartItemImage.src = elements.itemImage.src;
     elements.cartItemTitle.textContent = elements.itemTitle.textContent;
-    elements.cartItemPrice.textContent = elements.itemPrice.toFixed(2);
+    elements.cartItemPrice.textContent = `$${elements.itemPrice.toFixed(2)}`;
     elements.cartItemQuantity.textContent = inputNumber;
 
     const totalPrice = (inputNumber * elements.itemPrice).toFixed(2);
@@ -56,6 +56,23 @@ function displayCardBox() {
   cartBox.classList.toggle("hidden");
 }
 
+function removeDisplayCardBox(e) {
+  const currentClick = document.elementFromPoint(e.clientX, e.clientY);
+  if (!cartBox.classList.contains("hidden")) {
+    if (
+      currentClick.parentElement !== cartBox &&
+      currentClick.parentElement !== document.querySelector("#icon-cart-btn")
+    ) {
+      cartBox.classList.add("hidden");
+      return;
+    } else {
+      cartBox.classList.remove("hidden");
+    }
+  }
+}
+
+window.addEventListener("click", removeDisplayCardBox);
+
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const currentButton = e.currentTarget;
@@ -72,6 +89,23 @@ buttons.forEach((button) => {
         break;
       case "add-item-btn":
         updateCartItemDisplay();
+        break;
+      case "delete-item-btn":
+        let cartItemQuantityInt = parseInt(
+          elements.cartItemQuantity.textContent
+        );
+
+        if (cartItemQuantityInt - 1 == 0) {
+          emptyContentCart.classList.remove("hidden");
+          contentCart.classList.add("hidden");
+        }
+
+        elements.cartItemQuantity.textContent--;
+        const totalPrice = (cartItemQuantityInt * elements.itemPrice).toFixed(
+          2
+        );
+        elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
+
         break;
     }
   });
