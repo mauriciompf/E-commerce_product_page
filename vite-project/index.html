@@ -22,11 +22,11 @@
     <title>Frontend Mentor | E-commerce product page</title>
     <link rel="stylesheet" href="./src/css/index.css" />
   </head>
-  <body class="font-kumbph">
+  <body class="overflow-x-hidden font-kumbph">
     <div>
-      <header class="bg-white max-md:fixed z-10 w-full">
+      <header class="max-md:py-4 bg-white max-md:fixed z-10 w-full">
         <nav
-          class="border-b border-neu-grayish-blue w-[90%] md:w-[80%] mx-auto flex items-center justify-between"
+          class="md:border-b border-neu-grayish-blue w-[90%] md:w-[80%] mx-auto flex items-center justify-between"
         >
           <div class="flex items-center">
             <div class="max-md:flex gap-4 md:mr-12">
@@ -91,20 +91,17 @@
           </div>
         </nav>
       </header>
-      <main class="relative">
+      <aside class="relative">
         <div
           data-cart-box
-          class="hidden absolute shadow-2xl w-[350px] z-10 bg-white rounded-lg right-[50px] -top-14 pb-5"
+          class="hidden md:absolute fixed shadow-2xl w-[350px] z-10 bg-white rounded-lg right-[70px] max-md:left-1/2 max-md:top-16 max-md:-translate-x-1/2 -top-3 pb-5"
         >
           <p
             class="border-b border-neu-grayish-blue py-2 px-4 font-bold text-neu-very-dark-blue"
           >
             Cart
           </p>
-          <div
-            data-cart-empty
-            class="grid place-items-center h-[150px] w-[90%] mx-auto"
-          >
+          <div data-cart-empty class="grid place-items-center h-[150px]">
             <span class="text-neu-dark-grayish-blue font-bold"
               >Your cart is empty</span
             >
@@ -136,12 +133,15 @@
             </button>
           </div>
         </div>
+      </aside>
+      <main class="relative">
         <div
           class="md:mt-12 md:w-[75%] md:mx-auto md:flex items-start gap-24 justify-center"
         >
           <div class="md:w-full">
             <div class="relative">
               <button
+                id="prev-image"
                 aria-label="Previous image"
                 class="md:hidden left-4 bg-white aspect-square w-9 grid place-items-center rounded-full absolute -translate-y-[60%] top-[60%]"
               >
@@ -154,13 +154,17 @@
                 alt="Image product"
               />
               <button
+                id="next-image"
                 class="md:hidden bg-white aspect-square w-9 grid place-items-center rounded-full absolute right-4 -translate-y-[60%] top-[60%]"
                 aria-label="Next image"
               >
                 <img class="w-2" src="./src/images/icon-next.svg" alt="" />
               </button>
             </div>
-            <div class="max-md:hidden flex gap-4 md:mt-4 justify-between">
+            <div
+              data-images
+              class="max-md:hidden flex gap-4 md:mt-4 justify-between"
+            >
               <button
                 class="outline-transparent hover:opacity-50 focus:opacity-50"
                 aria-label="product image 1"
