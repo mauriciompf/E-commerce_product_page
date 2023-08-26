@@ -58,20 +58,62 @@ function displayCardBox() {
 
 function removeDisplayCardBox(e) {
   const currentClick = document.elementFromPoint(e.clientX, e.clientY);
+
+  const isInsideCartArea = [
+    contentCart,
+    emptyContentCart,
+    cartBox,
+    document.querySelector("aside"),
+    document.querySelector("#icon-cart-btn"),
+  ].some((element) => element.contains(currentClick));
+
   if (!cartBox.classList.contains("hidden")) {
-    if (
-      currentClick.parentElement !== cartBox &&
-      currentClick.parentElement !== document.querySelector("#icon-cart-btn")
-    ) {
-      cartBox.classList.add("hidden");
-      return;
-    } else {
-      cartBox.classList.remove("hidden");
-    }
+    cartBox.classList.toggle("hidden", !isInsideCartArea);
   }
 }
 
-window.addEventListener("click", removeDisplayCardBox);
+function deleteCartItem() {
+  let cartItemQuantityInt = parseInt(elements.cartItemQuantity.textContent);
+
+  if (cartItemQuantityInt - 1 == 0) {
+    emptyContentCart.classList.remove("hidden");
+    contentCart.classList.add("hidden");
+    cartItemNumber.textContent = "";
+  }
+
+  elements.cartItemQuantity.textContent--;
+  const totalPrice = (cartItemQuantityInt * elements.itemPrice).toFixed(2);
+  elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
+}
+
+function prevImage() {
+  const dataImages = [
+    {
+      id: 1,
+      src: "../images/image-product-1.jpg",
+    },
+    {
+      id: 2,
+      src: "../images/image-product-2.jpg",
+    },
+    {
+      id: 3,
+      src: "../images/image-product-3.jpg",
+    },
+    {
+      id: 4,
+      src: "./src/images/image-product-4.jpg",
+    },
+  ];
+
+  // const imagesButtons = document
+  // .querySelector("[data-images]")
+  // .querySelectorAll("button");
+
+  getElementItem("image").src = dataImages[dataImages.length - 1].src;
+}
+
+function nextImage() {}
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -91,25 +133,19 @@ buttons.forEach((button) => {
         updateCartItemDisplay();
         break;
       case "delete-item-btn":
-        let cartItemQuantityInt = parseInt(
-          elements.cartItemQuantity.textContent
-        );
-
-        if (cartItemQuantityInt - 1 == 0) {
-          emptyContentCart.classList.remove("hidden");
-          contentCart.classList.add("hidden");
-        }
-
-        elements.cartItemQuantity.textContent--;
-        const totalPrice = (cartItemQuantityInt * elements.itemPrice).toFixed(
-          2
-        );
-        elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
-
+        deleteCartItem();
+        break;
+      case "prev-image":
+        prevImage();
+        break;
+      case "next-image":
+        nextImage();
         break;
     }
   });
 });
+
+window.addEventListener("click", removeDisplayCardBox);
 
 function getElementItem(item) {
   return document.querySelector(`[data-item-${item}]`);
