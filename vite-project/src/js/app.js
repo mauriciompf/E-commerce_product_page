@@ -16,6 +16,13 @@ const elements = {
   cartItemTotalPrice: getElementCartItem("total-price"),
 };
 
+const dataImages = [
+  "./src/images/image-product-1.jpg",
+  "./src/images/image-product-2.jpg",
+  "./src/images/image-product-3.jpg",
+  "./src/images/image-product-4.jpg",
+];
+
 function updateCartItemDisplay() {
   const inputNumber = parseInt(quantityNumber.textContent);
 
@@ -63,7 +70,7 @@ function removeDisplayCardBox(e) {
     contentCart,
     emptyContentCart,
     cartBox,
-    document.querySelector("aside"),
+    document.querySelector("[data-cart-wrapper]"),
     document.querySelector("#icon-cart-btn"),
   ].some((element) => element.contains(currentClick));
 
@@ -86,34 +93,60 @@ function deleteCartItem() {
   elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
 }
 
-function prevImage() {
-  const dataImages = [
-    {
-      id: 1,
-      src: "../images/image-product-1.jpg",
-    },
-    {
-      id: 2,
-      src: "../images/image-product-2.jpg",
-    },
-    {
-      id: 3,
-      src: "../images/image-product-3.jpg",
-    },
-    {
-      id: 4,
-      src: "./src/images/image-product-4.jpg",
-    },
-  ];
-
-  // const imagesButtons = document
-  // .querySelector("[data-images]")
-  // .querySelectorAll("button");
-
-  getElementItem("image").src = dataImages[dataImages.length - 1].src;
+let imageIndex = 0;
+function UpdateImage() {
+  const imageElement = getElementItem("image");
+  imageElement.src = dataImages[imageIndex];
 }
 
-function nextImage() {}
+function prevImage() {
+  imageIndex--;
+
+  if (imageIndex < 0) {
+    imageIndex = dataImages.length - 1;
+  }
+
+  UpdateImage();
+}
+
+function nextImage() {
+  imageIndex++;
+
+  if (imageIndex >= dataImages.length) {
+    imageIndex = 0;
+  }
+
+  UpdateImage();
+}
+
+function openMenu() {
+  document.querySelector("[data-menu]").classList.remove("hidden");
+}
+
+function closeMenu() {
+  document.querySelector("[data-menu]").classList.add("hidden");
+}
+
+function updateImageSource(newSource) {
+  const imageElement = getElementItem("image");
+
+  if (imageElement) {
+    imageElement.src = newSource;
+  }
+}
+
+const buttonsImage = document
+  .querySelector("[data-images]")
+  .querySelectorAll("button");
+
+buttonsImage.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const clickedImage = document.elementFromPoint(e.clientX, e.clientY);
+    const newImageSource = clickedImage.src.replace("-thumbnail.jpg", ".jpg");
+
+    updateImageSource(newImageSource);
+  });
+});
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -140,6 +173,12 @@ buttons.forEach((button) => {
         break;
       case "next-image":
         nextImage();
+        break;
+      case "open-menu-btn":
+        openMenu();
+        break;
+      case "close-menu-btn":
+        closeMenu();
         break;
     }
   });
