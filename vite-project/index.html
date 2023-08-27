@@ -24,13 +24,27 @@
   </head>
   <body class="overflow-x-hidden font-kumbph">
     <div>
+      <aside class="hidden" data-menu>
+        <nav class="fixed p-6 z-50 bg-white w-56 h-full">
+          <button id="close-menu-btn" aria-label="Close menu">
+            <img src="./src/images/icon-close.svg" alt="" />
+          </button>
+          <ul class="grid gap-4 mt-8 font-bold">
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </aside>
       <header class="max-md:py-4 bg-white max-md:fixed z-10 w-full">
         <nav
           class="md:border-b border-neu-grayish-blue w-[90%] md:w-[80%] mx-auto flex items-center justify-between"
         >
           <div class="flex items-center">
             <div class="max-md:flex gap-4 md:mr-12">
-              <button id="menu-btn" class="pt-1 md:hidden">
+              <button id="open-menu-btn" class="pt-1 md:hidden">
                 <img src="./src/images/icon-menu.svg" alt="" />
               </button>
               <a href="#" aria-hidden="false">
@@ -91,7 +105,7 @@
           </div>
         </nav>
       </header>
-      <aside class="relative">
+      <aside data-cart-wrapper class="relative">
         <div
           data-cart-box
           class="hidden md:absolute fixed shadow-2xl w-[350px] z-10 bg-white rounded-lg right-[70px] max-md:left-1/2 max-md:top-16 max-md:-translate-x-1/2 -top-3 pb-5"
