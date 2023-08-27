@@ -80,15 +80,20 @@ function removeDisplayCardBox(e) {
 }
 
 function deleteCartItem() {
-  let cartItemQuantityInt = parseInt(elements.cartItemQuantity.textContent);
+  let cartItemQuantityInt = parseInt(elements.cartItemQuantity.textContent) - 1;
 
-  if (cartItemQuantityInt - 1 == 0) {
+  if (cartItemQuantityInt == 0) {
     emptyContentCart.classList.remove("hidden");
     contentCart.classList.add("hidden");
     cartItemNumber.textContent = "";
   }
 
   elements.cartItemQuantity.textContent--;
+  cartItemNumber.innerHTML--;
+
+  if (cartItemNumber.innerHTML === "-1") {
+    cartItemNumber.textContent = "";
+  }
   const totalPrice = (cartItemQuantityInt * elements.itemPrice).toFixed(2);
   elements.cartItemTotalPrice.textContent = `$${totalPrice}`;
 }
@@ -135,17 +140,33 @@ function updateImageSource(newSource) {
   }
 }
 
-const buttonsImage = document
-  .querySelector("[data-images]")
-  .querySelectorAll("button");
+const imageButtons = document.querySelectorAll("[data-images] button");
 
-buttonsImage.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    const clickedImage = document.elementFromPoint(e.clientX, e.clientY);
+imageButtons.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    const clickedImage =
+      e.target.tagName === "IMG" ? e.target : e.target.querySelector("img");
     const newImageSource = clickedImage.src.replace("-thumbnail.jpg", ".jpg");
-
     updateImageSource(newImageSource);
+
+    imageButtons.forEach((button) => {
+      button
+        .querySelector("img")
+        .classList.remove("border-2", "border-pri-orange", "opacity-50");
+    });
+
+    this.querySelector("img").classList.add(
+      "border-2",
+      "border-pri-orange",
+      "opacity-50"
+    );
   });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  imageButtons[0]
+    .querySelector("img")
+    .classList.add("border-2", "border-pri-orange", "opacity-50");
 });
 
 buttons.forEach((button) => {
