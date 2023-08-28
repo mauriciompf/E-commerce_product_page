@@ -126,10 +126,26 @@ function nextImage() {
 
 function openMenu() {
   document.querySelector("[data-menu]").classList.remove("hidden");
+  document
+    .querySelector("[data-outside-menu]")
+    .classList.add(
+      "after:fixed",
+      "after:inset-0",
+      "after:z-40",
+      "after:bg-black/50"
+    );
 }
 
 function closeMenu() {
   document.querySelector("[data-menu]").classList.add("hidden");
+  document
+    .querySelector("[data-outside-menu]")
+    .classList.remove(
+      "after:fixed",
+      "after:inset-0",
+      "after:z-40",
+      "after:bg-black/50"
+    );
 }
 
 function updateImageSource(newSource) {
