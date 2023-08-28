@@ -20,39 +20,43 @@
     />
 
     <title>Frontend Mentor | E-commerce product page</title>
-    <link rel="stylesheet" href="./src/css/index.css" />
     <link rel="stylesheet" href="./src/css/output.css" />
+    <link rel="stylesheet" href="./src/css/index.css" />
   </head>
   <body class="overflow-x-hidden font-kumbph">
-    <div>
-      <aside class="hidden" data-menu>
-        <nav class="fixed p-6 z-50 bg-white w-56 h-full">
-          <button id="close-menu-btn" aria-label="Close menu">
-            <img src="./src/images/icon-close.svg" alt="" />
-          </button>
-          <ul class="grid gap-4 mt-8 font-bold">
-            <li><a href="#">Collections</a></li>
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Women</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </aside>
+    <aside data-menu class="hidden">
+      <nav class="fixed p-6 z-50 bg-white w-56 h-full">
+        <button id="close-menu-btn" aria-label="Close menu">
+          <img src="./src/images/icon-close.svg" alt="" />
+        </button>
+        <ul class="grid gap-4 mt-8 font-bold">
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div data-outside-menu>
       <header class="max-md:py-4 bg-white max-md:fixed z-10 w-full">
         <nav
           class="md:border-b border-neu-grayish-blue w-[90%] md:w-[80%] mx-auto flex items-center justify-between"
         >
           <div class="flex items-center">
             <div class="max-md:flex gap-4 md:mr-12">
-              <button id="open-menu-btn" class="pt-1 md:hidden">
+              <button
+                aria-label="Open menu"
+                id="open-menu-btn"
+                class="pt-1 md:hidden"
+              >
                 <img src="./src/images/icon-menu.svg" alt="" />
               </button>
               <a href="#" aria-hidden="false">
                 <img src="./src/images/logo.svg" alt="Sneakers" />
               </a>
             </div>
-            <ul class="md:flex gap-6 hidden font-medium">
+            <ul class="md:flex gap-4 lg:gap-6 hidden font-medium">
               <li
                 class="cursor-pointer py-6 border-b-transparent border-b-2 hover:border-b-2 focus:border-b-2 hover:border-pri-orange focus:border-pri-orange text-neu-dark-grayish-blue hover:text-neu-very-dark-blue focus:text-neu-very-dark-blue"
               >
@@ -80,13 +84,14 @@
               </li>
             </ul>
           </div>
-          <div class="flex items-center justify-end gap-4 md:gap-8">
+          <div class="flex items-center justify-end gap-4 md:gap-2 lg:gap-8">
             <button
               id="icon-cart-btn"
               class="relative hover:animate-pulse focus:animate-pulse"
               aria-label="Cart link"
             >
               <p
+                aria-hidden="true"
                 data-cart-item-number
                 class="absolute -top-2 -right-2 bg-pri-orange w-full text-white font-bold text-xs rounded-full"
               ></p>
@@ -125,7 +130,7 @@
             <div
               class="my-5 text-neu-dark-grayish-blue flex gap-4 items-center"
             >
-              <img data-cart-image class="w-12 rounded-md" src="" alt="" />
+              <img data-cart-image class="w-12 rounded-md" alt="" />
               <div>
                 <p data-cart-title></p>
                 <p>
@@ -151,9 +156,9 @@
       </aside>
       <main class="relative">
         <div
-          class="md:mt-12 md:w-[75%] md:mx-auto md:flex items-start gap-24 justify-center"
+          class="md:mt-12 md:w-[75%] md:mx-auto lg:flex items-start gap-24 md:gap-16 justify-center"
         >
-          <div class="md:w-full">
+          <div class="basis-[max-content] md:w-full">
             <div class="relative">
               <button
                 id="prev-image"
@@ -249,7 +254,6 @@
                   -
                 </button>
                 <span data-item-input-number class="text-center">0</span>
-                <!-- <input aria-label="number" type="number" /> -->
                 <button id="plus-btn" class="text-2xl text-pri-orange p-4">
                   +
                 </button>
